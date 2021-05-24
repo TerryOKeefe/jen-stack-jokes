@@ -41,7 +41,7 @@ app.use(express.static('server/public'));
 app.get('/jokes', (req, res) => {
   // console log to show we got to /jokes in terminal
   console.log('got to /jokes');
-  // respond back with
+  // respond back to client
   res.send(jokes);
 })
 

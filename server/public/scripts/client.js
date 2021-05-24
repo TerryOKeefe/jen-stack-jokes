@@ -8,8 +8,7 @@ function onReady() {
     // click listener on add joke button
     $('#addJokeButton').on('click', addJoke);
     
-    
-    // call getJokes onReady
+    // call getJokes onReady to display original jokes
     getJokes();
 }
 
@@ -27,10 +26,11 @@ function getJokes() {
         $('#outputDiv').empty();
         // append jokes to the DOM
         for (let joke of response) {
-            // target each with . notation
+            // target <div> in HTML
+            // target each with . notation in for/of loop
             $('#outputDiv').append(`
-            <div>${joke.jokeQuestion} 
-            ${joke.punchLine} By: ${joke.whoseJoke}</div>
+            <div>${joke.whoseJoke} - ${joke.jokeQuestion} 
+            ${joke.punchLine}</div>
             `);
         }
     });
@@ -51,7 +51,9 @@ function addJoke() {
         url: '/jokes',
         data: newJoke    // this becomes req.body on server
     }).then(function (response) {
-        console.log(response);
+        // console log to see created (201)
+        console.log('Should show created:', response);
+        // call getJokes to display new data on DOM
         getJokes();
     });
 }
