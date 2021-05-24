@@ -29,8 +29,10 @@ function getJokes() {
             // target <div> in HTML
             // target each with . notation in for/of loop
             $('#outputDiv').append(`
-            <div>
-                ${joke.whoseJoke} - ${joke.jokeQuestion} ${joke.punchLine}
+            <div class="newDiv">
+                <div>${joke.whoseJoke}</div>
+                <div class="indent">${joke.jokeQuestion}</div>
+                <div class="indent">${joke.punchLine}</div>
             </div>
             `);
         }
