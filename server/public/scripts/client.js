@@ -23,6 +23,8 @@ function getJokes() {
     }).then(function (response){
         // console log response to see what shows
         console.log('Response is:', response);
+        // empty the display so we don't see duplicates
+        $('#outputDiv').empty();
         // append jokes to the DOM
         for (let joke of response) {
             // target each with . notation
