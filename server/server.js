@@ -45,6 +45,16 @@ app.get('/jokes', (req, res) => {
   res.send(jokes);
 })
 
+// POST for the new data coming in
+app.post('/jokes', (req, res) => {
+  // console log the incoming data
+  console.log(req.body);
+  // push new data into the jokes array
+  jokes.push(req.body);
+  // send a created (201) response
+  res.sendStatus(201);
+})
+
 app.listen(PORT, () => {
   console.log('server running on: ', PORT);
 }); // end spin up server

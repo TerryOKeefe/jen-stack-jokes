@@ -4,10 +4,17 @@ $( document ).ready( onReady );
 
 function onReady() {
     console.log('DOM ready');
+    
+    // click listener on add joke button
+    $('#addJokeButton').on('click', addJoke);
+    
+    
     // call getJokes onReady
     getJokes();
 }
 
+// function to get jokes from server
+// append them to the DOM
 function getJokes() {
     // go to server and get jokes
     $.ajax({
@@ -24,6 +31,25 @@ function getJokes() {
             ${joke.punchLine} By: ${joke.whoseJoke}</div>
             `);
         }
-        
+    });
+}
+
+// function to add new jokes
+function addJoke() {
+    console.log('Clicked Add Joke');
+    // gather new data inputs
+    let newJoke = {
+        whoseJoke: $('#whoseJokeIn').val(),
+        jokeQuestion: $('#questionIn').val(),
+        punchLine: $('#punchlineIn').val()
+    };
+    // make a POST
+    $.ajax({
+        method: 'POST',
+        url: '/jokes',
+        data: newJoke    // this becomes req.body on server
+    }).then(function (response) {
+        console.log(response);
+        getJokes();
     });
 }
