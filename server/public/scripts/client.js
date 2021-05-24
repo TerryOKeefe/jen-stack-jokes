@@ -10,12 +10,12 @@ function onReady() {
     
     // call getJokes onReady to display original jokes
     getJokes();
-}
+} // end onReady
 
 // function to get jokes from server
 // append them to the DOM
 function getJokes() {
-    // go to server and get jokes
+    // go to server and GET jokes
     $.ajax({
         method: 'GET',
         url: '/jokes'
@@ -29,12 +29,13 @@ function getJokes() {
             // target <div> in HTML
             // target each with . notation in for/of loop
             $('#outputDiv').append(`
-            <div>${joke.whoseJoke} - ${joke.jokeQuestion} 
-            ${joke.punchLine}</div>
+            <div>
+                ${joke.whoseJoke} - ${joke.jokeQuestion} ${joke.punchLine}
+            </div>
             `);
         }
     });
-}
+} // end getJokes
 
 // function to add new jokes
 function addJoke() {
@@ -56,4 +57,4 @@ function addJoke() {
         // call getJokes to display new data on DOM
         getJokes();
     });
-}
+} // end AddJoke
