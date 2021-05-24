@@ -37,6 +37,14 @@ let jokes = [
 // serve back static files
 app.use(express.static('server/public'));
 
+// GET request
+app.get('/jokes', (req, res) => {
+  // console log to show we got to /jokes in terminal
+  console.log('got to /jokes');
+  // respond back with
+  res.send(jokes);
+})
+
 app.listen(PORT, () => {
   console.log('server running on: ', PORT);
 }); // end spin up server
